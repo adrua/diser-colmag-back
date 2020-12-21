@@ -11,7 +11,7 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("Inscripciones-Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "C:\\Pruebas\\Colegios\\Inscripciones-Backend\\Inscripciones-Backend", "Inscripciones-Backend.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("Inscripciones-Backend", "C:\\Pruebas\\Colegios\\Inscripciones-Backend\\Inscripciones-Backend", "Inscripciones-Backend.csproj", "0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("Inscripciones-Backend.Testing")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

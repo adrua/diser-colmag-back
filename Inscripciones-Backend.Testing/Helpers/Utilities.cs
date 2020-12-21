@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
@@ -26,16 +27,8 @@ namespace Inscripciones_Backend.Testing
         {
             if (Token == null)
             {
-                var loginUrl = $"{LoginBaseAddress}/Login/ApplicationUserLogin";
+                Token = "ABC123";
 
-                var client = new HttpClient();
-
-                var content = new StringContent($"{{\"username\":\"{_user}\", \"password\": \"{_password}\"}}", ASCIIEncoding.UTF8, "application/json");
-
-                //// Act
-                var response = client.PostAsync(loginUrl, content).Result;
-                dynamic json = Newtonsoft.Json.JsonConvert.DeserializeObject(response.Content.ReadAsStringAsync().Result);
-                Token = json.value;
             }
             return Token;
         }

@@ -1,7 +1,7 @@
 //IColmagCasasManager.cs
 using System;
 using System.Linq;
-using Microsoft.AspNetCore.OData.Formatter.Value;
+using Microsoft.AspNet.OData;
 
 using Inscripciones.TablasBasicas.Models;
 

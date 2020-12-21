@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OData.ModelBuilder;
+using System;
 
 namespace Inscripciones.OData
 {
@@ -7,12 +8,9 @@ namespace Inscripciones.OData
     {
         public ConventionModelBuilder _general;
 
-        public IServiceCollection Services { get; set; }
-
-        public InscripcionesODataConventionModelBuilder(IServiceCollection services) : base()
+        public InscripcionesODataConventionModelBuilder() : base()
         {
             //oData Entity Mapping
-            Services = services;
             _general = new ConventionModelBuilder(this);
         }
 

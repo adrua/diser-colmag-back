@@ -2,21 +2,13 @@ using Inscripciones.OData;
 using Inscripciones.TablasBasicas.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OData.Edm;
-using Microsoft.OData.ModelBuilder;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Inscripciones_Backend
 {
@@ -38,20 +30,20 @@ namespace Inscripciones_Backend
                 options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
             );
 
-            services.AddCors(options => options.AddPolicy("AllowAll", p => p.WithOrigins("http://localhost:4200", "https://localhost:4200", "https://arkeostoolsng9.multiclicksistemas.net", "http://arkeostoolsng9.multiclicksistemas.net")
+            services.AddCors(options => options.AddPolicy("AllowAll", p => p.WithOrigins("http://localhost:4200", "https://localhost:4200", "http://localhost", "https://localhost")
                                                                     .AllowAnyMethod()
                                                                      .AllowAnyHeader()
                                                                      .AllowCredentials()));
 
             services.AddControllers();
 
+            services.AddHttpContextAccessor();
+
             //Managers
             services.AddODataScoped();
 
-            var builder = new InscripcionesODataConventionModelBuilder(services);
+            var builder = new InscripcionesODataConventionModelBuilder();
             IEdmModel model0 = builder.GetEdmModel();
-
-            services.AddSingleton<ODataConventionModelBuilder>(builder);
 
             var oDataBuilder = services.AddOData(opt =>
             {
@@ -76,6 +68,12 @@ namespace Inscripciones_Backend
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Inscripciones_Backend v1"));
+                app.UseExceptionHandler("/error-local-development");
+            }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+                app.UseHsts();
             }
 
             app.UseHttpsRedirection();
@@ -88,6 +86,15 @@ namespace Inscripciones_Backend
             {
                 endpoints.MapControllers();
             });
+
+            //using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            //{
+            //    var context = serviceScope.ServiceProvider.GetService<InscripcionesContext>();
+            //    if (context.Database.ProviderName != "Microsoft.EntityFrameworkCore.InMemory")
+            //    {
+            //        context.Database.Migrate();
+            //    }
+            //}
         }
     }
 }

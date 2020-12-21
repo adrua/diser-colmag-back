@@ -27,4 +27,11 @@ namespace Inscripciones.TablasBasicas.Models
         }
 
         // Use only for ArkeosFactory Test. Please remove on Application
-        public InscripcionesContext(DbContextOptions options, IConfiguration confi
+        public InscripcionesContext(DbContextOptions options, IConfiguration configuration) : base(options)
+        {
+            Configuration = configuration;
+        }
+
+    }
+}
+

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.OData.ModelBuilder;
+using Microsoft.AspNet.OData.Builder;
 using Microsoft.EntityFrameworkCore;
 
 namespace Inscripciones.TablasBasicas.Models
@@ -23,13 +23,13 @@ namespace Inscripciones.TablasBasicas.Models
     #region Enum
     #endregion
 
+    #region EF Mapping
 	
     /// <summary>
     /// Extensión para registrar mapping con el Entity Framework y oData
     /// </summary>
 	public static class ColmagCasasExtension
 	{	        
-        #region EF Mapping
         public static ModelBuilder ColmagCasasMapping(this ModelBuilder modelBuilder)
         {
             var entity = modelBuilder.Entity<ColmagCasas>();
@@ -66,7 +66,8 @@ namespace Inscripciones.TablasBasicas.Models
 
             ////Ignored properties for oData
             // entityConfig.EntityType.Ignore(x => x.Summary);
-        }		
-        #endregion
+        }
+		
     }
+    #endregion
 }
