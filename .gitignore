@@ -2,4 +2,9 @@
 # Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
 ################################################################################
 
+/Inscripciones-Backend/.vs
 /Inscripciones-Backend/bin
+/Inscripciones-Backend/obj
+/Inscripciones-Backend.Testing/bin
+/Inscripciones-Backend.Testing/obj
+

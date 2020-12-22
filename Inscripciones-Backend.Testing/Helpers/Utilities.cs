@@ -28,7 +28,6 @@ namespace Inscripciones_Backend.Testing
             if (Token == null)
             {
                 Token = "ABC123";
-
             }
             return Token;
         }

@@ -1,6 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OData.ModelBuilder;
+﻿using Microsoft.AspNet.OData.Builder;
 using System;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Inscripciones.OData
 {
@@ -8,7 +8,7 @@ namespace Inscripciones.OData
     {
         public ConventionModelBuilder _general;
 
-        public InscripcionesODataConventionModelBuilder() : base()
+        public InscripcionesODataConventionModelBuilder(IServiceProvider provider) : base(provider)
         {
             //oData Entity Mapping
             _general = new ConventionModelBuilder(this);

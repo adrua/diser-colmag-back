@@ -6,6 +6,7 @@ using System;
 namespace Colegios.Support
 {
     [ApiController]
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class ErrorController : ControllerBase
     {
         [Route("/error-local-development")]

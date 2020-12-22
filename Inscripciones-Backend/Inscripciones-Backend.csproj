@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Inscripciones_Backend</RootNamespace>
+    <UserSecretsId>548a9325-775e-44bc-b548-51bf469e5bdf</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

@@ -16,18 +16,18 @@ namespace Inscripciones.TablasBasicas.Managers
     public class ColmagCasasManager : IColmagCasasManager
 	{	
         private readonly ILogger<ColmagCasasManager> logger;
-        private readonly ColmagContext context;
+        private readonly ColMagContext context;
         private readonly IHttpContextAccessor httpContextAccessor;
         private readonly string userId;
 
         public ColmagCasasManager(ILogger<ColmagCasasManager> logger,
-                                ColmagContext context,
+                                ColMagContext context,
                                 IHttpContextAccessor httpContextAccessor)
         {
             this.logger = logger;
             this.context = context;
             this.httpContextAccessor = httpContextAccessor;
-            this.userId = ApplicationUserTokenHelper.GetIdFromAuthorization(httpContextAccessor.HttpContext.Request);
+            //this.userId = ApplicationUserTokenHelper.GetIdFromAuthorization(httpContextAccessor.HttpContext.Request);
         }
 
         IQueryable<ColmagCasas> IColmagCasasManager.GetAll()

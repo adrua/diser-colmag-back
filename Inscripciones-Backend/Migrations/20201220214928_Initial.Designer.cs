@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Inscripciones_Backend.Migrations
 {
-    [DbContext(typeof(InscripcionesContext))]
+    [DbContext(typeof(ColMagContext))]
     [Migration("20201220214928_Initial")]
     partial class Initial
     {

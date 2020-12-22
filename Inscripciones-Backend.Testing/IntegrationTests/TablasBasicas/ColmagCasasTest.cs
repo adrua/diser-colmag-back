@@ -14,8 +14,8 @@ using Newtonsoft.Json;
 using Xunit;
 
 using Inscripciones.TablasBasicas.Models;
-using Inscripciones_Back;
-using Inscripciones_Back.Testing;
+using Inscripciones_Backend;
+using Inscripciones_Backend.Testing;
 
 namespace Inscripciones.TablasBasicas.Tests.IntegrationTests
 {

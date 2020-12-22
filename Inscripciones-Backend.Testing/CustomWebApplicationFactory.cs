@@ -12,11 +12,11 @@ namespace Inscripciones_Backend.Testing
     public class CustomWebApplicationFactory<TStartup>
         : WebApplicationFactory<TStartup> where TStartup : class
     {
-        public InscripcionesContext Db;
+        public ColMagContext Db;
         public Utilities utilities;
         public ILogger<CustomWebApplicationFactory<TStartup>> logger;
         public string Token;
-        public Action<InscripcionesContext> InitializeDbForTests = null;
+        public Action<ColMagContext> InitializeDbForTests = null;
 
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
@@ -28,11 +28,11 @@ namespace Inscripciones_Backend.Testing
 
                 var descriptor = services.SingleOrDefault(
                     d => d.ServiceType ==
-                        typeof(DbContextOptions<InscripcionesContext>));
+                        typeof(DbContextOptions<ColMagContext>));
 
                 services.Remove(descriptor);
 
-                services.AddDbContext<InscripcionesContext>(options =>
+                services.AddDbContext<ColMagContext>(options =>
                 {
                     // options.UseSqlServer($"Server=(localdb)\\mssqllocaldb;Initial Catalog=esap_testing;AttachDbFileName=C:\\Solin\\Esap-Data\\esap_testing.mdf;Integrated Security=true;MultipleActiveResultSets=true");
                     options.UseInMemoryDatabase("InMemoryDbForTesting");
@@ -44,7 +44,7 @@ namespace Inscripciones_Backend.Testing
                 {
 
                     var scopedServices = scope.ServiceProvider;
-                    Db = scopedServices.GetRequiredService<InscripcionesContext>();
+                    Db = scopedServices.GetRequiredService<ColMagContext>();
                     logger = scopedServices.GetRequiredService<ILogger<CustomWebApplicationFactory<TStartup>>>();
 
                     Db.Database.EnsureCreated();
